@@ -1,9 +1,8 @@
 .app {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 48px;
+  gap: 84px;
   min-height: 100svh;
   padding: 48px 32px;
   box-sizing: border-box;
