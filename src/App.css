@@ -1,184 +1,197 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
-
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-}
-
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
-}
-
-#center {
+.app {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  min-height: 100svh;
+  padding: 48px 32px;
+  box-sizing: border-box;
 }
 
-#next-steps {
+.app__title {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: var(--text-h);
+}
+
+.bulb-row {
   display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
   width: 100%;
+  padding: 24px 16px;
+  overflow-x: auto;
+  box-sizing: border-box;
+}
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
+.bulb-row__list {
+  display: flex;
+  align-items: flex-end;
+  margin-left: auto;
+}
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
+.bulb-slot {
+  position: relative;
+  flex: none;
+}
+
+.bulb-slot__button {
+  display: block;
+  padding: 0;
+  border: none;
+  border-radius: 16px;
+  background: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.bulb-slot__button:hover {
+  transform: translateY(-4px);
+}
+
+.bulb-slot__button:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.bulb-slot__button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.bulb {
+  display: block;
+  width: 100px;
+  height: auto;
+  overflow: visible;
+  padding: 30px;
+}
+
+/* ─── Выключена ─── */
+
+.bulb__glass {
+  fill: var(--bulb-glass);
+  stroke: var(--bulb-glass-stroke);
+  stroke-width: 3;
+  transition: 0.25s ease;
+}
+
+.bulb__filament {
+  fill: none;
+  stroke: var(--bulb-filament);
+  stroke-width: 3;
+  stroke-linecap: round;
+  transition: 0.25s ease;
+}
+
+.bulb__base {
+  fill: var(--bulb-metal);
+  stroke: var(--bulb-metal-stroke);
+  stroke-width: 2;
+}
+
+.bulb__thread {
+  fill: none;
+  stroke: var(--bulb-metal-stroke);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.bulb__contact {
+  fill: var(--bulb-metal-stroke);
+}
+
+.bulb__rays {
+  opacity: 0;
+  transition: 0.25s ease;
+}
+
+.bulb__rays line {
+  stroke: var(--bulb-ray);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+/* ─── Включена ─── */
+
+.bulb.is-on .bulb__glass {
+  fill: var(--bulb-on-glass);
+  stroke: var(--bulb-on-glass-stroke);
+  filter:
+    drop-shadow(0 0 8px var(--bulb-on-glass))
+    drop-shadow(0 0 25px rgba(255, 216, 77, 0.7));
+}
+
+.bulb.is-on .bulb__filament {
+  stroke: var(--bulb-on-filament);
+}
+
+.bulb.is-on .bulb__rays {
+  opacity: 1;
+}
+
+.bulb-slot__remove {
+  position: absolute;
+  top: 4px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--text-h);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    color 0.15s,
+    transform 0.15s;
+}
+
+.bulb-slot__remove:hover {
+  border-color: #e5484d;
+  color: #e5484d;
+  transform: scale(1.1);
+}
+
+.bulb-slot__remove:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+}
+
+.controls__button {
+  padding: 12px 24px;
+  border: 2px solid var(--accent-border);
+  border-radius: 8px;
+  background: var(--accent-bg);
+  color: var(--text-h);
+  font: inherit;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.controls__button:hover {
+  border-color: var(--accent);
+}
+
+.controls__button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.result {
+  min-height: 32px;
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 24px;
+  color: var(--text-h);
 }
