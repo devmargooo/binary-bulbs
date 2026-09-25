@@ -1,4 +1,8 @@
+/* ─── Фон версии: холоднее бинарного, чтобы страницы не путались ─── */
+
 .tapp {
+  --bg: #eae3fa;
+  --border: #d6c9f2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,6 +10,14 @@
   min-height: 100svh;
   padding: 48px 32px;
   box-sizing: border-box;
+  background: var(--bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  .tapp {
+    --bg: #191325;
+    --border: #2f2545;
+  }
 }
 
 .tapp__title {
@@ -58,7 +70,15 @@
   outline-offset: 4px;
 }
 
+/* ─── Неоново-фиолетовое свечение вместо янтарного ─── */
+
 .tbulb {
+  --bulb-on-glass: #d946ef;
+  --bulb-on-glass-stroke: #a21caf;
+  --bulb-on-filament: #5a0a72;
+  --bulb-ray: #e879f9;
+  --tbulb-glow: rgba(217, 70, 239, 0.7);
+
   display: block;
   width: 100px;
   height: auto;
@@ -126,7 +146,7 @@
   stroke-width: 3;
   filter:
     drop-shadow(0 0 8px var(--bulb-on-glass))
-    drop-shadow(0 0 25px rgba(255, 216, 77, 0.7));
+    drop-shadow(0 0 25px var(--tbulb-glow));
   transition: 0.25s ease;
 }
 
